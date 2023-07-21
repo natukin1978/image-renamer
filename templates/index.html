@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>画像タイル配置ツール</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+  <input type="text" id="folderPathInput" placeholder="Enter folder path...">
+  <button id="loadButton">Load</button> <!-- Loadボタンを追加 -->
+
+  <div class="container" id="container">
+    <!-- ここに画像がタイル状に配置されます -->
+  </div>
+
+  <!-- リネームボタンを追加 -->
+  <button id="renameButton">Rename</button>
+
+  <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>
