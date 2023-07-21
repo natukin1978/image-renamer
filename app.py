@@ -1,5 +1,5 @@
 import os
-from flask import Flask, render_template, send_from_directory, jsonify, request
+from flask import Flask, render_template, make_response, send_file, jsonify, request
 
 app = Flask(__name__)
 
@@ -22,7 +22,13 @@ def load_images(folder_path):
 
 @app.route('/images/<path:folder_path>/<path:image_file>')
 def images(folder_path, image_file):
-    return send_from_directory(folder_path, image_file)
+    image_path = os.path.join(folder_path, image_file)
+
+    # Cache-Controlヘッダーを設定して画像を返す
+    cache_timeout = 0  # キャッシュの有効期間を0秒に設定（キャッシュを無効化）
+    response = make_response(send_file(image_path))
+    response.headers['Cache-Control'] = f'max-age={cache_timeout}, no-cache, no-store, must-revalidate'
+    return response
 
 @app.route('/rename_images', methods=['POST'])
 def rename_images():
