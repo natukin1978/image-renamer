@@ -6,22 +6,26 @@
   <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
 </head>
 <body>
-  <input type="text" id="folderPathInput" placeholder="Enter folder path...">
-  <button id="loadButton">Load</button> <!-- Loadボタンを追加 -->
+  <div class="controls">
+    <input type="text" id="folderPathInput" placeholder="Enter folder path...">
+    <button id="loadButton">Load</button> <!-- Loadボタンを追加 -->
+  </div>
 
-  <div/>
+  <div class="controls">
+    <!-- リネームボタンを追加 -->
+    <button id="renameButton">Rename</button>
+  </div>
 
-  <!-- 画像拡大ボタン -->
-  <button id="zoomInButton">＋</button>
-  <!-- 画像縮小ボタン -->
-  <button id="zoomOutButton">－</button>
+  <div class="controls">
+    <!-- 画像拡大ボタン -->
+    <button id="zoomInButton">＋</button>
+    <!-- 画像縮小ボタン -->
+    <button id="zoomOutButton">－</button>
+  </div>
 
   <div class="container" id="container">
     <!-- ここに画像がタイル状に配置されます -->
   </div>
-
-  <!-- リネームボタンを追加 -->
-  <button id="renameButton">Rename</button>
 
   <script src="{{ url_for('static', filename='script.js') }}"></script>
   <script src="{{ url_for('static', filename='drag_and_drop.js') }}"></script>
