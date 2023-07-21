@@ -69,7 +69,8 @@ document.addEventListener("DOMContentLoaded", function () {
     const imageNames = Array.from(images).map((image, index) => {
       const fileName = image.getAttribute('alt');
       const extension = fileName.split('.').pop(); // 拡張子
-      return { oldName: fileName, newName: `image_${index + 1}.${extension}` };
+      const newName = `image_${(index + 1).toString().padStart(5, '0')}.${extension}`;
+      return { oldName: fileName, newName: newName };
     });
 
     fetch('/rename_images', {
