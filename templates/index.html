@@ -9,6 +9,13 @@
   <input type="text" id="folderPathInput" placeholder="Enter folder path...">
   <button id="loadButton">Load</button> <!-- Loadボタンを追加 -->
 
+  <div/>
+
+  <!-- 画像拡大ボタン -->
+  <button id="zoomInButton">＋</button>
+  <!-- 画像縮小ボタン -->
+  <button id="zoomOutButton">－</button>
+
   <div class="container" id="container">
     <!-- ここに画像がタイル状に配置されます -->
   </div>
@@ -18,5 +25,6 @@
 
   <script src="{{ url_for('static', filename='script.js') }}"></script>
   <script src="{{ url_for('static', filename='drag_and_drop.js') }}"></script>
+  <script src="{{ url_for('static', filename='zoom.js') }}"></script>
 </body>
 </html>
