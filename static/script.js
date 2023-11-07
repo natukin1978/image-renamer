@@ -30,12 +30,13 @@ document.addEventListener("DOMContentLoaded", function () {
 
   // リネームボタンが押された時の処理
   document.getElementById('renameButton').addEventListener('click', () => {
+    const startNumber = parseInt(document.getElementById('startNumberInput').value) || 1; // 初期値を取得
     const images = container.querySelectorAll('img');
 
     const imageNames = Array.from(images).map((image, index) => {
       const fileName = image.getAttribute('alt');
       const extension = fileName.split('.').pop(); // 拡張子
-      const newName = `image_${(index + 1).toString().padStart(5, '0')}.${extension}`;
+      const newName = `image_${(startNumber + index).toString().padStart(5, '0')}.${extension}`;
       return { oldName: fileName, newName: newName };
     });
 
@@ -49,15 +50,15 @@ document.addEventListener("DOMContentLoaded", function () {
         images: imageNames
       })
     })
-      .then(response => response.json())
-      .then(data => {
-        console.log(data.message);
-        // リネーム後に画像を再ロードしてタイリングする
-        tileImages();
-      })
-      .catch(error => {
-        console.error('Error renaming images:', error);
-        // エラー処理を行う
-      });
+    .then(response => response.json())
+    .then(data => {
+      console.log(data.message);
+      // リネーム後に画像を再ロードしてタイリングする
+      tileImages();
+    })
+    .catch(error => {
+      console.error('Error renaming images:', error);
+      // エラー処理を行う
+    });
   });
 });
